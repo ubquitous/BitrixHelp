@@ -11,7 +11,7 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 global $APPLICATION;
 $componentParams = $_REQUEST;
 
-$APPLICATION->IncludeComponent('custom:show.highload',
+$APPLICATION->IncludeComponent('ForFunction:show.log.components',
     isset($componentParams['template']) ? $componentParams['template'] : '',
     $componentParams,
     false,

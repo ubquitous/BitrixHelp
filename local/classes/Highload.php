@@ -12,11 +12,11 @@ use \Bitrix\Main\Loader;
  */
 class Highload
 {
-    private $block;
-    private $entity;
-    private $classes;
-    private $id;
-    private $name;
+    public $block;
+    public $entity;
+    public $classes;
+    public $id;
+    public $name;
     function __construct($id)
     {
         if(!Loader::includeModule('highloadblock')){

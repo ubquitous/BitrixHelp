@@ -308,10 +308,21 @@ class allComponents extends CBitrixComponent
             'offset' => $pageSize * ($pageNum - 1),
             'order' => $arSort
         ]);
+        $cur = \CCurrency::GetList(($by="name"), ($order="asc"), LANGUAGE_ID);
+        $allCur = [];
+        while ($c = $cur->fetch()){
+            $allCur[$c["CURRENCY"]] = $c;
+        }
         foreach ($items as $item){
+
+            foreach ($item as $key => $val){
+
+            }
+
             $item['columns'] = array();
             foreach ($this->arResult['HEADERS'] as $header) {
                 if ($header['type'] == 'list') {
+
                     if (is_array($item[$header['id']])) {
                         $values = array();
                         foreach ($item[$header['id']] as $val) {
@@ -334,7 +345,7 @@ class allComponents extends CBitrixComponent
                 }
             }
             $row[] = [
-                'id' => $item,
+                'id' => $item["ID"],
                 'actions' => [],
                 'data' => $item,
                 'editable' => 'N',
@@ -344,7 +355,6 @@ class allComponents extends CBitrixComponent
 
 
         $this->arResult['ROW'] = $row;
-
 
 //        $resultItem = array(
 //            'id' => $arItem['ID'],

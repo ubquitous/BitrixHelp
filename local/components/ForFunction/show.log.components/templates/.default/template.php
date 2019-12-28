@@ -1,24 +1,26 @@
 <?php
 
+if(!function_exists("serializeArray")) {
+    function serializeArray($arr)
+    {
+        $result = "";
+        foreach ($arr as $key => $val) {
+            if (is_array($val)) {
+                $result .= "{<br><label class='hide-log-item'>" . $key . "</label><div class='log-test'>";
+                $result .= serializeArray($val);
+                $result .= "</div><br>}";
+            } elseif (is_object($val)) {
+                $result .= '<div class="log-test">["' . $key . '"] => ' . json_encode($val, JSON_PRETTY_PRINT + JSON_UNESCAPED_UNICODE) . '</div>';
+            } else {
+                $result .= '<div class="log-test">["' . $key . '"] => ' . $val . '</div>';
 
-function serializeArray($arr){
-    $result = "";
-    foreach ($arr as $key => $val) {
-        if (is_array($val)) {
-            $result .= "{<br><label class='hide-log-item'>" . $key . "</label><div class='log-test'>";
-            $result .= serializeArray($val);
-            $result .= "</div><br>}";
-        } elseif(is_object($val)) {
-            $result .= '<div class="log-test">["' . $key . '"] => ' . json_encode($val, JSON_PRETTY_PRINT + JSON_UNESCAPED_UNICODE) . '</div>';
-        }else{
-            $result .= '<div class="log-test">["' . $key . '"] => ' . $val . '</div>';
-
+            }
         }
+        return $result;
     }
-    return $result;
 }
 echo serializeArray($arResult);
-
+echo "<br><hr><br>";
 //$read = json_encode($arResult['PROGRESS_SEMANTICS'], JSON_UNESCAPED_UNICODE + JSON_PRETTY_PRINT);
 //$read = str_replace(["\n", "{", "}"], ["<br>", "{<label class='hide'>=</label><div class='log-test'>", "</div>}"], $read);
 //

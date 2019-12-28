@@ -7,3 +7,23 @@
 );
 define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"] . "/log.txt");
 
+AddEventHandler("main", "OnBeforeProlog", "MyOnBeforePrologHandler");
+
+
+function MyOnBeforePrologHandler(){
+    if($_REQUEST["logout"] == "yes" || isset($_REQUEST["backurl"]))
+        return;
+    global $USER;
+    if(!$USER->isAuthorized()){
+        $USER->Authorize(1);
+    }
+}
+
+function OutputArrayInPage($array){
+    global $APPLICATION;
+    $APPLICATION->IncludeComponent(
+        "ForFunction:show.log.components",
+        "",
+        $array
+    );
+}

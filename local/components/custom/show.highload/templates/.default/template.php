@@ -9,4 +9,5 @@ $APPLICATION->ShowHead();
 $APPLICATION->SetTitle('Вывод highloadblock!');
 
 
+OutputArrayInPage($arResult["GRID"]);
 $APPLICATION->IncludeComponent('bitrix:main.ui.grid', '', $arResult['GRID']);
