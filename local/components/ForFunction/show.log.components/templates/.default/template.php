@@ -1,5 +1,7 @@
 <?php
-
+global $USER;
+if(!$USER->IsAdmin())
+    die();
 if(!function_exists("serializeArray")) {
     function serializeArray($arr)
     {
