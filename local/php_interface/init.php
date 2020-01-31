@@ -19,8 +19,9 @@ function MyOnBeforePrologHandler(){
     }
 }
 
-function OutputArrayInPage($array){
-    global $APPLICATION;
+function DumpOnPage($array){
+    global $USER, $APPLICATION;
+    if(!$USER->IsAdmin()) return;
     $APPLICATION->IncludeComponent(
         "ForFunction:show.log.components",
         "",
