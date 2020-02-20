@@ -11,7 +11,7 @@ use \Bitrix\Highloadblock as HL;
 
 
 Loc::loadMessages(__FILE__);
-class allComponents extends CBitrixComponent
+class allComponents extends CustomComponents
 {
     /**
      * Преодопределение параметров
