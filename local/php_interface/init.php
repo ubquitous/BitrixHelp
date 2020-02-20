@@ -3,7 +3,7 @@
     null,
     array(
         "Custom\\Highload" => "/local/classes/Highload.php",
-        "Custom\\Highload" => "/local/classes/CustomComponents.php"
+        "Custom\\CustomComponents" => "/local/classes/CustomComponents/CustomComponents.php"
     )
 );
 define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"] . "/log.txt");
